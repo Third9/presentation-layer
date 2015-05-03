@@ -1,0 +1,4 @@
+paho-mqtt==1.1
+pyee==0.1.0
+pythrust==0.7.5
+websockets==2.4
