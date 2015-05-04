@@ -97,7 +97,7 @@ def main():
     window = api.window({'root_url': 'file://%s/index.html' % ROOT_FOLDER})   
     window.on('closed', on_close)
     asyncio.async(window.set_kiosk(True))
-    # asyncio.async(window.open_devtools())
+    asyncio.async(window.open_devtools())
     asyncio.async(window.show())
     asyncio.async(window.focus())
     asyncio.async(mqtt_loop())

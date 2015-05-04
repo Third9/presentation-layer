@@ -5,12 +5,26 @@
     <webview id="tab" src="about:blank" />
     <script>
 			window.onload = function() {
+			    var wv = document.getElementById("tab");
+			    wv.addEventListener('did-start-loading', function() {
+			      console.log('Loading... ' + wv.getAttribute('src'));
+			    });
+			    wv.addEventListener('did-stop-loading', function() {
+			      console.log('Loaded ' + wv.getAttribute('src'));
+			    });
+					
+			    wv.addEventListener('dialog', function() {
+			      console.log('Dialog ' + wv.getAttribute('src'));
+			    });
+					
+
         socket = new WebSocket("ws://localhost:8765");
         socket.binaryType = "arraybuffer";
         socket.onopen = function() {
            console.log("Connected!");
            isopen = true;
         }
+						
         socket.onmessage = function(e) {
            if (typeof e.data == "string") {
               console.log("Text message received: " + e.data);
